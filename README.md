@@ -91,7 +91,7 @@ docker run --rm -it promptimus-agent "Show me which processes are using the most
 
 ```bash
 # 🏗️ Setup your environment
-git clone <repository-url>
+git clone git@github.com:tripathiji1312/promptimus.git
 cd Promptimus
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
