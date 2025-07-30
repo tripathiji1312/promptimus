@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./logo.png" alt="Promptimus - A Neural Shell Assistant" width="600" style="max-width: 100%; height: auto; margin: 20px 0;" />
+<img src="promptimus_logo.png" alt="Promptimus - A Neural Shell Assistant" width="600" style="max-width: 100%; height: auto; margin: 20px 0;" />
 
 ### *Revolutionary Neural Shell Assistant - Where AI Meets Command Line Mastery*
 
@@ -93,7 +93,7 @@ docker run --rm -it promptimus-agent "Show me which processes are using the most
 # 🏗️ Setup your environment
 git clone <repository-url>
 cd Promptimus
-python3 -m venv venv && source venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
 # 🚀 Launch the agent
@@ -215,15 +215,14 @@ graph TD
 ├── 🤖 agent.py                    # Main CLI agent implementation
 ├── 🐳 Dockerfile                  # Container configuration
 ├── 📋 requirements.txt            # Python dependencies
-├── 📊 data/
-│   ├── qa_data.json              # Raw Stack Exchange dataset (150+ entries)
-│   └── qa_data_cleaned.json      # Curated training data
-├── 🧠 tinyllama-cmd-adapter-final/
+├── 📄 LICENSE                     # MIT License
+├── 🖼️ logo.png                    # Promptimus brand logo
+├── 📊 data/                       # Training datasets
+├── 📁 logs/                       # Agent interaction logs
+├── 🧠 tinyllama-cmd-adapter-final/ # Fine-tuned model weights
 │   ├── adapter_config.json       # LoRA configuration
 │   ├── adapter_model.safetensors # Fine-tuned model weights
 │   └── [other model files]       # Tokenizer & training artifacts
-├── 📁 logs/
-│   └── trace.jsonl               # Agent interaction logs
 ├── 📖 Documentation/
 │   ├── report.md                 # Executive summary
 │   ├── eval_static.md            # Model comparison analysis
@@ -232,7 +231,8 @@ graph TD
 └── ⚙️ Development Scripts/
     ├── collect_data.py           # Stack Exchange data collection
     ├── curate_data.py            # Automated data cleaning
-    └── run_evaluation.py         # Evaluation pipeline
+    ├── run_evaluation.py         # Evaluation pipeline
+    └── tiny.ipynb                # Jupyter notebook for experiments
 ```
 
 ---
@@ -500,13 +500,16 @@ python run_evaluation.py
 
 ```bash
 # Run with custom model path
-python agent.py --model-path ./custom-adapter "Your command here"
+python agent.py --model-path ./tinyllama-cmd-adapter-final "Your command here"
 
-# Enable verbose logging
+# Enable verbose logging (output will be in logs/ directory)
 python agent.py --verbose "Complex operation request"
 
 # Dry-run mode only (no execution suggestions)
 python agent.py --dry-run-only "Dangerous operation"
+
+# Explore training and evaluation in Jupyter
+jupyter notebook tiny.ipynb
 ```
 
 ---
@@ -519,14 +522,15 @@ python agent.py --dry-run-only "Dangerous operation"
 # Clone and setup development environment
 git clone <repository-url>
 cd Promptimus
-python -m venv dev-env
-source dev-env/bin/activate
-pip install -r requirements.txt -r requirements-dev.txt
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+pip install -r requirements.txt
 
-# Run development tests
-python -m pytest tests/
-python -m flake8 agent.py
-python -m black agent.py
+# Run the agent
+python agent.py "Your command here"
+
+# Explore the Jupyter notebook
+jupyter notebook tiny.ipynb
 ```
 
 ### 🌟 **How to Contribute**
