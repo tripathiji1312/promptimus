@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="promptimus_logo.png" alt="Promptimus - A Neural Shell Assistant" width="600" style="max-width: 100%; height: auto; margin: 20px 0;" />
+<img src="logo.png" alt="Promptimus - A Neural Shell Assistant" width="600" style="max-width: 100%; height: auto; margin: 20px 0;" />
 
 ### *Revolutionary Neural Shell Assistant - Where AI Meets Command Line Mastery*
 
